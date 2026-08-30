@@ -16,3 +16,7 @@ anthropic==1.1.0
 
 # Used by ingest_papers.py and query_papers.py to load API keys from .env
 python-dotenv==1.2.3
+
+# Local cross-encoder reranking in query_papers.py (pulls in torch, ~1GB).
+# Only needed for --rerank_backend local, which is the default.
+sentence-transformers==6.0.0

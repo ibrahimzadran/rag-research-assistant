@@ -57,6 +57,9 @@ import chromadb
 import voyageai
 from dotenv import load_dotenv
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+from query_papers import RETRIEVE_K, rerank_chunks  # noqa: E402
+
 load_dotenv()
 
 EMBED_MODEL = "voyage-3.5"
@@ -115,10 +118,28 @@ THE ANSWER (as recorded by someone who read the whole paper):
 PASSAGE:
 {passage}
 
-Reply YES only if the passage actually states the answer, or enough of it that a
-reader would learn the answer from this passage alone. Reply NO if the passage
-merely mentions the topic, discusses something adjacent, or would require another
-passage to complete the answer.
+Reply YES only if the passage states the answer, or enough of it that a reader
+would learn the answer from this passage alone.
+
+Reply NO in each of these cases, which look like near-misses and are not:
+
+1. The passage only NAMES or MENTIONS the thing asked about without answering
+   the question about it. A bibliography entry, a citation, a table of contents,
+   a section heading, or a passing reference is a mention, not an answer. If the
+   question asks which dataset a paper used, an entry listing that dataset in the
+   references does not answer it -- the passage describing its use does.
+
+2. The question has several parts and the passage answers only some. If the
+   question asks which of three methods scored highest AND by how much, a passage
+   giving the winner's score but not the others' is incomplete. Answer NO.
+
+3. The passage states THAT something is true but the question asks HOW or WHY,
+   and the mechanism or reason is absent.
+
+4. Answering would require combining this passage with another one.
+
+Your own knowledge of the subject is irrelevant. Judge only whether THIS passage,
+read alone, delivers what the question asks for.
 
 Reply with exactly one word: YES or NO."""
 
@@ -155,6 +176,11 @@ def main():
     parser.add_argument("--top_k", type=int, default=10)
     parser.add_argument("--results_dir", default="./evals/results")
     parser.add_argument("--label", default="")
+    parser.add_argument("--rerank", action="store_true",
+                        help="Over-retrieve then rerank, as query_papers.py does")
+    parser.add_argument("--retrieve_k", type=int, default=RETRIEVE_K)
+    parser.add_argument("--rerank_backend", default="local",
+                        choices=("local", "voyage"))
     args = parser.parse_args()
 
     dataset = args.dataset or args.testset
@@ -194,8 +220,26 @@ def main():
 
     vo = voyageai.Client()
     vectors = embed_questions(vo, [c["question"] for c, _ in scorable])
-    found = collection.query(query_embeddings=vectors, n_results=args.top_k,
-                             include=["documents", "metadatas"])
+
+    # Fetch more candidates when reranking, then cut back to top_k per question,
+    # exactly as query_papers.py does -- the eval must score the shipped path.
+    n_fetch = args.retrieve_k if args.rerank else args.top_k
+    raw = collection.query(query_embeddings=vectors, n_results=n_fetch,
+                           include=["documents", "metadatas"])
+
+    if args.rerank:
+        found = {"ids": [], "documents": [], "metadatas": []}
+        for (case, _), ids, docs, metas in zip(scorable, raw["ids"],
+                                               raw["documents"], raw["metadatas"]):
+            cands = [{"id": i, "text": d, "meta": m}
+                     for i, d, m in zip(ids, docs, metas)]
+            top = rerank_chunks(vo, case["question"], cands, args.top_k,
+                                backend=args.rerank_backend)
+            found["ids"].append([c["id"] for c in top])
+            found["documents"].append([c["text"] for c in top])
+            found["metadatas"].append([c["meta"] for c in top])
+    else:
+        found = raw
 
     claude = anthropic.Anthropic() if needs_judge else None
     per_case = []
@@ -250,11 +294,14 @@ def main():
 
     os.makedirs(args.results_dir, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    tag = "-".join(kinds)
+    tag = "-".join(kinds) + ("-rerank" if args.rerank else "-norerank")
     out_path = os.path.join(args.results_dir, f"retrieval_{tag}_{stamp}.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump({"timestamp": stamp, "dataset": dataset, "ground_truth": kinds,
                    "label": args.label, "top_k": args.top_k, "n_cases": n,
+                   "rerank": args.rerank,
+                   "rerank_backend": args.rerank_backend if args.rerank else None,
+                   "retrieve_k": args.retrieve_k if args.rerank else args.top_k,
                    "recall_at_k": recall, "mrr": mrr,
                    "paper_recall_at_k": p_recall, "paper_mrr": p_mrr,
                    "cases": per_case}, f, indent=2)

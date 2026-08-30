@@ -87,15 +87,24 @@ excerpt or a model's judgement, and both are fallible.
 |---|---|---|---|---|
 | Generated, unverified | 20 | one chunk id | 1.00 | 0.67 |
 | Generated, self-checked | 20 | one chunk id | 0.95 | 0.71 |
-| Hand-written, full-text read | 13 | LLM-judged | 0.92 | **0.75** (corrected) |
+| Hand-written, full-text read | 13 | LLM-judged | **1.00** | **0.88** |
 
-The hand-written set was first reported at MRR 0.88. All 13 cases were then
-verified by hand against the PDFs: **2 of 12 judged calls were wrong** (17%). In
-one, the judge accepted a bibliography entry naming a dataset as an answer to
-"which dataset did this paper use"; the real answer was at rank 8. In another it
-accepted an abstract containing one of three numbers a comparison question
-needed; the real answer was at rank 6. Correcting both gives 0.75, or 0.73 if a
-third borderline case is also counted against.
+The hand-written row is measured with reranking on and the tightened judge. The
+same set without reranking scores 0.92 / 0.76, so reranking is worth +0.08
+recall and +0.12 MRR. See "Over-retrieve then rerank" below.
+
+The relevance judge was originally too lenient. Hand-verifying all 13 cases
+against the PDFs found **2 of 12 judged calls wrong** (17%): one accepted a
+bibliography entry naming a dataset as the answer to "which dataset did this
+paper use", the other accepted an abstract holding one of three numbers a
+comparison question needed. The judge prompt now rejects mere mentions, partial
+answers to multi-part questions, and statements of fact where the question asks
+how or why.
+
+The fix was checked the same way it was found, not assumed: re-running changed
+exactly those two verdicts and left the other eleven untouched, so it corrected
+the target errors without becoming over-strict. On one of them the tightened
+judge found a better chunk (rank 4) than the manual analysis had (rank 6).
 
 Generated sets carry the opposite bias: they demand one *specific* chunk, so a
 different chunk that answers perfectly scores as a miss. Their figures are
@@ -174,10 +183,22 @@ and never enters the top 10. The reason is positional: the answer begins at word
 the configuration agent. Its embedding describes the configuration agent, not the
 argument buried inside it.
 
-This is the single confirmed retrieval failure in the hand-written set, and it
-constrains the fix. A reranker over the current top 10 would not help, because
-the chunk is not in the top 10. The pattern that would work is **over-retrieve
-then rerank** -- fetch ~50, rerank, keep 10. Rank 16 sits comfortably inside 50.
+**Over-retrieve then rerank** is the fix, and it works. `query_papers.py` fetches
+50 candidates and reranks down to 10. On the case above, that moves chunk12 from
+outside the top 10 to rank 7 with the local cross-encoder, or rank 1 with
+Voyage's hosted reranker. Across the whole hand-written set it is worth +0.08
+recall and +0.12 MRR. Reranking the existing top 10 would have done nothing --
+the chunk was never in it.
+
+Two backends, selected with `--rerank_backend`:
+
+- `local` (default) -- a MiniLM cross-encoder run on this machine. Free,
+  unmetered, offline, ~10 seconds per query. Needs `sentence-transformers`.
+- `voyage` -- hosted `rerank-2.5`. Ranks better (rank 1 vs rank 7 on the case
+  above) but the free tier holds at most ~8 chunks per request and needs a full
+  minute between requests, which is ~8 minutes per query. Measured, not assumed.
+
+Use `--no-rerank` to compare against plain embedding order.
 
 Other limitations:
 

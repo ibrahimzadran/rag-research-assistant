@@ -1,0 +1,14 @@
+question: Why does the CARROT paper consider it impractical to directly train a mo...
+target  : chunk12 (contains all three reasons)
+
+  embedding only, top 10  -> NOT IN TOP 10 (rank 16 of 460, measured earlier)
+  retrieve 50, rerank to 10 -> rank 1
+
+  reranked top 5:
+    1. chunk12   CARROT: A Learned Cost-Constrained Retrieval  <-- TARGET
+    2. chunk8    CARROT: A Learned Cost-Constrained Retrieval
+    3. chunk5    CARROT: A Learned Cost-Constrained Retrieval
+    4. chunk7    CARROT: A Learned Cost-Constrained Retrieval
+    5. chunk4    CARROT: A Learned Cost-Constrained Retrieval
+
+PASS: the answer chunk is now at rank 1 (was outside the top 10 entirely).
