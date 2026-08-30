@@ -1,0 +1,263 @@
+{
+  "timestamp": "20260830T052719Z",
+  "dataset": "evals/fulltext_qa.jsonl",
+  "ground_truth": [
+    "judged"
+  ],
+  "label": "hand-written after full-text read",
+  "top_k": 10,
+  "n_cases": 13,
+  "recall_at_k": 0.9230769230769231,
+  "mrr": 0.8846153846153846,
+  "paper_recall_at_k": 1.0,
+  "paper_mrr": 1.0,
+  "cases": [
+    {
+      "question": "What's the key difference between AR-RAG's patch-level retrieval and prior image-level retrieval-augmented methods in terms of when retrieval happens during generation?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk1",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk1",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk0",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk2",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk11",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk9",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk10",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk18",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk3",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk6",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk17"
+      ]
+    },
+    {
+      "question": "What are the two decoding strategies AR-RAG proposes for incorporating retrieved patches, and which one requires fine-tuning?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk2",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk2",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk1",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk16",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk11",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk5",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk0",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk18",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk5",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk4",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk10"
+      ]
+    },
+    {
+      "question": "On the GenEval benchmark, how did FAiD combined with Janus-Pro compare to the plain Janus-Pro baseline?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk8",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk8",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk20",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk10",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk3",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk7",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk22",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk9",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk4",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk2",
+        "AR-RAG_Autoregressive_Retrieval_Augmentation_for_Image_Generation.pdf::chunk18"
+      ]
+    },
+    {
+      "question": "Among spaCy, T5, and a GPT-3.5-turbo RAG approach, which scored highest on ROUGE-1 for automated literature review generation, and by how much?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk0",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk0",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk8",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk4",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk6",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk1",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk7",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk3",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk5",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk9",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk17"
+      ]
+    },
+    {
+      "question": "What dataset did this literature-review paper use to train and test its three summarization approaches?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk9",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk9",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk4",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk6",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk28",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk12",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk11",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk22",
+        "Automated_Literature_Review_Using_NLP_Techniques_and_LLM-Based_Retrieval-Augmented_Generation.pdf::chunk3",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk17",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk20"
+      ]
+    },
+    {
+      "question": "Why does CARROT use Monte Carlo Tree Search instead of just greedily picking the highest-scored chunks for a RAG prompt?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk8",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk8",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk6",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk7",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk0",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk21",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk3",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk10",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk2",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk9",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk23"
+      ]
+    },
+    {
+      "question": "Why does the CARROT paper consider it impractical to directly train a model to predict the optimal chunk combination order?",
+      "rank": null,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk6",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk2",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk3",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk23",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk8",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk5",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk0",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk4",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk24",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk7"
+      ]
+    },
+    {
+      "question": "What social or environmental factor made participants reluctant to use verbal commands with an AI assistant during the exhibition study?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk4",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk4",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk3",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk5",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk2",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk0",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk8",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk7",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk1",
+        "Factually_Exploring_Wearable_Fact-Checking_for_Augmented_Truth_Discernment.pdf::chunk4",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk6"
+      ]
+    },
+    {
+      "question": "What research method did this cognitive-augmentation paper use, and where did the study take place?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk4",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk4",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk3",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk0",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk1",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk6",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk2",
+        "Intelligent_Interaction_Strategies_for_Context-Aware_Cognitive_Augmentation.pdf::chunk5",
+        "Designing_AI_Systems_that_Augment_Human_Performed_vs_Demonstrated_Critical_Thinking.pdf::chunk3",
+        "Designing_AI_Systems_that_Augment_Human_Performed_vs_Demonstrated_Critical_Thinking.pdf::chunk5",
+        "Designing_AI_Systems_that_Augment_Human_Performed_vs_Demonstrated_Critical_Thinking.pdf::chunk4"
+      ]
+    },
+    {
+      "question": "How does DDRO's training process avoid the need for a separate reward model, unlike the GenRRL approach it compares against?",
+      "rank": 2,
+      "paper_rank": 1,
+      "matched_chunk_id": "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk12",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk5",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk12",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk11",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk2",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk6",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk9",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk3",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk0",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk16",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk8"
+      ]
+    },
+    {
+      "question": "On the Natural Questions benchmark, did DDRO perform better with title+URL docids or product-quantization docids, and why?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk15",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk15",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk14",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk12",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk11",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk7",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk6",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk16",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk9",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk13",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk8"
+      ]
+    },
+    {
+      "question": "What's the main weakness in prior RAG membership-inference attacks that the Interrogation Attack was designed to fix?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk0",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk0",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk23",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk2",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk9",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk6",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk1",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk3",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk4",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk5",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk31"
+      ]
+    },
+    {
+      "question": "How does the Interrogation Attack decide whether a target document is present in a RAG system's private database?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk10",
+      "acceptable_chunk_ids": [],
+      "returned": [
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk10",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk2",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk9",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk0",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk5",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk23",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk6",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk11",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk13",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk1"
+      ]
+    }
+  ]
+}

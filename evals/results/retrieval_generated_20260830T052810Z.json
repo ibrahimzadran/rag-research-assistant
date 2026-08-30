@@ -1,0 +1,436 @@
+{
+  "timestamp": "20260830T052810Z",
+  "dataset": "evals/testset_unverified.jsonl",
+  "ground_truth": [
+    "generated"
+  ],
+  "label": "",
+  "top_k": 10,
+  "n_cases": 20,
+  "recall_at_k": 1.0,
+  "mrr": 0.6650595238095238,
+  "paper_recall_at_k": 1.0,
+  "paper_mrr": 1.0,
+  "cases": [
+    {
+      "question": "What taxonomy of failure categories and definitions was used to classify root causes of incorrect answers in an iterative RAG pipeline, and at what point in the pipeline should each failure be attributed?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk40"
+      ],
+      "returned": [
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk40",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk41",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk23",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk22",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk24",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk39",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk20",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk22",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk23",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk33"
+      ]
+    },
+    {
+      "question": "What weighted fusion ratio between dense embedding vectors and BM25 sparse embedding vectors was used in the retrieval system, and what rationale was given for this specific weighting?",
+      "rank": 3,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk4"
+      ],
+      "returned": [
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk3",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk6",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk4",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk3",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk6",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk10",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk4",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk6",
+        "Lightweight_and_Direct_Document_Relevance_Optimization_for_Generative_Information_Retrieval.pdf::chunk13",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk7"
+      ]
+    },
+    {
+      "question": "What is the token cost trade-off associated with using active retrieval in EVOR compared to Single-time querying, in terms of both performance gain and computational overhead for ChatGPT and CodeLlama?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk20"
+      ],
+      "returned": [
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk20",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk23",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk10",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk8",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk11",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk20",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk18",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk7",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk1",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk19"
+      ]
+    },
+    {
+      "question": "How does EVOR's approach of synchronously evolving both queries and knowledge bases compare in execution accuracy to existing retrieval-augmented code generation methods like Reflexion and DocPrompting?",
+      "rank": 3,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk0"
+      ],
+      "returned": [
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk7",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk1",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk0",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk8",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk6",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk2",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk12",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk11",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk10",
+        "EVOR_Evolving_Retrieval_for_Code_Generation.pdf::chunk5"
+      ]
+    },
+    {
+      "question": "Under what condition does RAGPart's majority voting mechanism successfully filter out poisoned embeddings when a corpus contains a single adversarial document with np poisoned fragments, and how does this condition differ from the naive fragment-mixing baseline in terms of the number of poisoned mixes x relative to the total combinations (N choose k)?",
+      "rank": 3,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk11"
+      ],
+      "returned": [
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk14",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk12",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk11",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk13",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk28",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk5",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk10",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk29",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk27",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk15"
+      ]
+    },
+    {
+      "question": "How does the Interrogation Attack's stealthiness compare to existing membership inference methods in terms of detection frequency by straightforward detectors?",
+      "rank": 2,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk0"
+      ],
+      "returned": [
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk2",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk0",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk9",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk32",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk23",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk31",
+        "Identity-Decoupled_Anonymization_for_Visual_Evidence_in_Multi-modal_Retrieval-Augmented_Generation.pdf::chunk12",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk27",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk14",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk15"
+      ]
+    },
+    {
+      "question": "How does EHR-RAGp avoid repeated recomputation of historical embeddings during retrieval-augmented conditioning, and what strategy is used to reduce the storage requirements of the vector database?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk29"
+      ],
+      "returned": [
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk29",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk28",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk6",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk7",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk2",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk30",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk15",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk5",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk4",
+        "EHR-RAGp_Retrieval-Augmented_Prototype-Guided_Foundation_Model_for_Electronic_Health_Records.pdf::chunk36"
+      ]
+    },
+    {
+      "question": "Why does greedy selection fail to find the optimal chunk combination order in RAG systems, and how does an MCTS-based policy tree search address this limitation?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk8"
+      ],
+      "returned": [
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk8",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk7",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk9",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk6",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk10",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk3",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk5",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk4",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk12",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk2"
+      ]
+    },
+    {
+      "question": "How does the query classification system distinguish between questions requiring logical multi-step deduction (REASONER) versus those requiring information synthesis (LARGE), and what linguistic indicators differentiate them?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk30"
+      ],
+      "returned": [
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk30",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk29",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk7",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk10",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk8",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk24",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk4",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk6",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk9",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk20"
+      ]
+    },
+    {
+      "question": "What bidirectional diffusion mechanism does the PABD algorithm use to propagate relevance scores across knowledge levels, and what are its two directed phases?",
+      "rank": 3,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk15"
+      ],
+      "returned": [
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk16",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk6",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk15",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk7",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk17",
+        "Overcoming_low-utility_facets_for_complex_answer_retrieval.pdf::chunk12",
+        "Overcoming_low-utility_facets_for_complex_answer_retrieval.pdf::chunk11",
+        "Overcoming_low-utility_facets_for_complex_answer_retrieval.pdf::chunk7",
+        "Overcoming_low-utility_facets_for_complex_answer_retrieval.pdf::chunk5",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk5"
+      ]
+    },
+    {
+      "question": "What specific constraint is imposed on questions generated by the one-hop question prompt in IGMiRAG regarding the use of conjunctions and multiple inquiries?",
+      "rank": 2,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk31"
+      ],
+      "returned": [
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk32",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk31",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk20",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk10",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk21",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk22",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk28",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk24",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk29",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk25"
+      ]
+    },
+    {
+      "question": "How does incorporating structured metadata (such as company name, fiscal year, and section heading) as embedded content in retrieval-augmented generation pipelines compare to using metadata only as a post-retrieval filter, in terms of retrieval accuracy and downstream answer correctness on SEC filings?",
+      "rank": 2,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk1"
+      ],
+      "returned": [
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk8",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk1",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk0",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk5",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk7",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk2",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk4",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk6",
+        "Utilizing_Metadata_for_Better_Retrieval-Augmented_Generation.pdf::chunk3",
+        "Overcoming_low-utility_facets_for_complex_answer_retrieval.pdf::chunk15"
+      ]
+    },
+    {
+      "question": "How does IGMiRAG's preference-aware bidirectional diffusion algorithm integrate both top-down and bottom-up reasoning along deductive pathways to support deep memory retrieval?",
+      "rank": 5,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk2"
+      ],
+      "returned": [
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk16",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk6",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk17",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk7",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk2",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk15",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk4",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk5",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk0",
+        "IGMiRAG_Intuition-Guided_Retrieval-Augmented_Generation_with_Adaptive_Mining_of_In-Depth_Memory.pdf::chunk3"
+      ]
+    },
+    {
+      "question": "What is the computational time overhead of dynamic segmentation models (Simple-Qwen and Topic-Qwen) compared to fixed-size or semantic segmenters when embedding the NFCorpus dataset?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk9"
+      ],
+      "returned": [
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk9",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk5",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk6",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk10",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk19",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk8",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk2",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk18",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk17",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk12"
+      ]
+    },
+    {
+      "question": "What accuracy improvements does a proprietary RAG evaluation platform achieve on metrics such as chunk attribution, chunk utilization, context adherence, and completeness assessment compared to a GPT-3.5-Turbo baseline?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk18"
+      ],
+      "returned": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk18",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk17",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk15",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk7",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk3",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk6",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk16",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk14",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk23",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk2"
+      ]
+    },
+    {
+      "question": "What advantage does incorporating RAG during fine-tuning offer over conventional fine-tuning approaches in terms of a model's contextual understanding capabilities?",
+      "rank": 8,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "MUST-RAG_MUSical_Text_Question_Answering_with_Retrieval_Augmented_Generation.pdf::chunk1"
+      ],
+      "returned": [
+        "MUST-RAG_MUSical_Text_Question_Answering_with_Retrieval_Augmented_Generation.pdf::chunk8",
+        "MUST-RAG_MUSical_Text_Question_Answering_with_Retrieval_Augmented_Generation.pdf::chunk3",
+        "MUST-RAG_MUSical_Text_Question_Answering_with_Retrieval_Augmented_Generation.pdf::chunk4",
+        "MUST-RAG_MUSical_Text_Question_Answering_with_Retrieval_Augmented_Generation.pdf::chunk7",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk6",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk0",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk1",
+        "MUST-RAG_MUSical_Text_Question_Answering_with_Retrieval_Augmented_Generation.pdf::chunk1",
+        "Riddle_Me_This_Stealthy_Membership_Inference_for_Retrieval-Augmented_Generation.pdf::chunk31",
+        "MUST-RAG_MUSical_Text_Question_Answering_with_Retrieval_Augmented_Generation.pdf::chunk6"
+      ]
+    },
+    {
+      "question": "How do different document chunking strategies compare in terms of context preservation, implementation complexity, computational overhead, and optimal use cases in RAG systems?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk19"
+      ],
+      "returned": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk19",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk2",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk1",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk0",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk9",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk4",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk3",
+        "Reconstructing_Context_Evaluating_Advanced_Chunking_Strategies_for_Retrieval-Augmented_Generation.pdf::chunk8",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk2",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk5"
+      ]
+    },
+    {
+      "question": "What four critical metrics does the RAG-Reward framework establish for evaluating generation quality in RLHF-based RAG systems?",
+      "rank": 7,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk27"
+      ],
+      "returned": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk15",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk16",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk7",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk3",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk14",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk11",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk27",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk18",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk13",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk3"
+      ]
+    },
+    {
+      "question": "What are the relative trade-offs between traditional NLP metrics, LLM-based evaluation methods, and hybrid approaches in terms of semantic understanding, computational cost, human correlation, and scalability for RAG system assessment?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk16"
+      ],
+      "returned": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk16",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk14",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk15",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk17",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk7",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk0",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk11",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk17",
+        "CARROT_A_Learned_Cost-Constrained_Retrieval_Optimization_System_for_RAG.pdf::chunk18",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk3"
+      ]
+    },
+    {
+      "question": "Why is majority voting chosen over intersection-based aggregation as the aggregation method for RAGPart, despite both methods effectively reducing Attack Success Rate in the FiQA dataset?",
+      "rank": 1,
+      "paper_rank": 1,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk29"
+      ],
+      "returned": [
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk29",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk28",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk10",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk5",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk9",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk11",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk24",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk27",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk23",
+        "RAGPart_RAGMask_Retrieval-Stage_Defenses_Against_Corpus_Poisoning_in_Retrieval-Augmented_Generation.pdf::chunk4"
+      ]
+    }
+  ]
+}

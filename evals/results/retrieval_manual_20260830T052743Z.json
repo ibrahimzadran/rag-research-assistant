@@ -1,0 +1,58 @@
+{
+  "timestamp": "20260830T052743Z",
+  "dataset": "evals/manual_qa.jsonl",
+  "ground_truth": [
+    "manual"
+  ],
+  "label": "",
+  "top_k": 10,
+  "n_cases": 2,
+  "recall_at_k": 1.0,
+  "mrr": 0.375,
+  "paper_recall_at_k": 1.0,
+  "paper_mrr": 0.375,
+  "cases": [
+    {
+      "question": "What are the three quality dimensions Ragas assesses, and how is each defined?",
+      "rank": 4,
+      "paper_rank": 4,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk7"
+      ],
+      "returned": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk15",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk3",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk14",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk7",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk3",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk2",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk18",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk1",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk17",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk16"
+      ]
+    },
+    {
+      "question": "Which quality dimension did the Ragas authors find hardest to evaluate, and why?",
+      "rank": 2,
+      "paper_rank": 2,
+      "matched_chunk_id": null,
+      "acceptable_chunk_ids": [
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk7"
+      ],
+      "returned": [
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk15",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk7",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk14",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk2",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk18",
+        "Engineering_the_RAG_Stack_A_Comprehensive_Review_of_the_Architecture_and_Trust_Frameworks_for_Retrie.pdf::chunk3",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk1",
+        "FAIR-RAG_Faithful_Adaptive_Iterative_Refinement_for_Retrieval-Augmented_Generation.pdf::chunk24",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk6",
+        "Ragas_Automated_Evaluation_of_Retrieval_Augmented_Generation.pdf::chunk0"
+      ]
+    }
+  ]
+}
