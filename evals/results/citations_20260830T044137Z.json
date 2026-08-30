@@ -1,0 +1,285 @@
+{
+  "timestamp": "20260830T044137Z",
+  "top_k": 10,
+  "citation_accuracy": 0.9642857142857143,
+  "citation_coverage": 0.8235294117647058,
+  "claims_checked": 28,
+  "uncited_lines": 6,
+  "questions": [
+    {
+      "question": "What taxonomy of failure categories and definitions was used to classify root causes of incorrect answers in an iterative RAG pipeline, and at what point in the pipeline should each failure be attributed?",
+      "answer": "## Failure Taxonomy for an Iterative RAG Pipeline\n\nBased on the sources, FAIR-RAG's failure mode analysis employed a structured taxonomy of **six failure categories**, each attributed to a specific point in the pipeline. The guiding principle is to identify the **earliest, most fundamental error** \u2014 if retrieval fails, generation will also fail, but the root cause is attributed to retrieval, not generation [1][2].\n\n---\n\n### The Six Failure Categories\n\n**1. Query Decomposition Error**\nAttributed at the very first stage of the pipeline. This occurs when the initial user question is not broken down into effective, specific sub-queries \u2014 the sub-queries were irrelevant, missed key aspects of the original question, or sent the retrieval process in the wrong direction from the beginning [1][2]. In practice, this often stemmed from an inability to challenge flawed premises within the user's question (e.g., processing a query with a historical anachronism) or generating overly broad sub-queries [3].\n\n**2. Retrieval Failure**\nAttributed at the document retrieval stage. This occurs when the retriever, despite having well-formed sub-queries, fails to find and return relevant documents \u2014 the correct information was simply not present in the set of all retrieved (unfiltered) documents [1][2]. The primary root cause was identified as **Knowledge Base Gaps**, where required information was absent from the corpus entirely [3][4].\n\n**3. Evidence Filtering Error**\nAttributed at the post-retrieval filtering/reranking stage. This occurs when the correct information *was* successfully retrieved, but the subsequent filtering step mistakenly discarded the crucial documents \u2014 evidence of this is found by checking the discarded documents set for information that should have been kept [1][2].\n\n**4. SEA Error (Strategic Analyst Error)**\nAttributed to the Strategic Evidence Assessment module, which acts as the reasoning \"brain\" of the iterative process [3]. This category has three subtypes [1][2]:\n- **(A) Flawed Deconstruction**: The \"Required Findings\" checklist was incorrect or missed the main point of the question.\n- **(B) Faulty Analysis**: The module failed to make a correct logical inference, hallucinated a confirmed finding not supported by evidence, or incorrectly identified remaining gaps.\n- **(C) Contradictory Verdict**: The detailed analysis pointed to missing information, but the final verdict was mistakenly \"Sufficient: Yes,\" causing the system to stop searching prematurely (also called **Premature Sufficiency Judgment**) [3].\n\n**5. Query Refinement Error**\nAttributed to the query refinement stage, *after* the SEA module has correctly identified insufficiency. This occurs when the system fails to generate effective new sub-queries to target specific information gaps \u2014 the new queries were redundant, vague, or did not address the missing pieces identified by the SEA module [1][2].\n\n**6. Generation Failure**\nAttributed only at the final synthesis stage, and only when all preceding steps worked correctly. This occurs when the final evidence set contained all necessary information, but the language model still produced a flawed answer through hallucination, incorrect logical inference, or misinterpretation of the evidence [1][2][3]. Common subtypes included: (i) Incorrect Entity Selection from a list of candidates; (ii) Flawed Logical Inference in comparative questions; and (iii) Misinterpretation of Question Granularity [3].\n\n---\n\n### High-Level Structural Split\n\nThe taxonomy organizes these six categories into two broader classes [4]:\n\n| Class | Categories | Share of Errors |\n|---|---|---|\n| **Component-Level Failures** | Retrieval Failure, Generation Failure | 63.5% |\n| **Architectural Failures** | SEA Error, Query Decomposition, Query Refinement, Evidence Filtering | 36.5% |\n\nThis distinction is critical: Component-Level failures stem from the inherent limitations of the underlying retrieval and generation models, while Architectural failures are directly attributable to FAIR-RAG's internal decision-making logic and thus represent the most direct opportunities for framework improvement [4].\n\n---\n\n### Task-Dependent Attribution\n\nThe appropriate failure category to expect also varies by task complexity [3][5]:\n- For **factoid single-hop datasets** (e.g., TriviaQA), **Retrieval Failures dominate** (47%",
+      "uncited_lines": 6,
+      "claims": [
+        {
+          "claim": "Based on the sources, FAIR-RAG's failure mode analysis employed a structured taxonomy of **six failure categories**, each attributed to a specific point in the pipeline. The guiding principle is to identify the **earliest, most fundamental error** \u2014 if retrieval fails, generation will also fail, but the root cause is attributed to retrieval, not generation .",
+          "refs": [
+            1,
+            2
+          ],
+          "supported": true,
+          "reason": "The source text explicitly lists six failure categories and states the \"PRIMARY FAILURE RULE\" that the earliest, most fundamental error should be identified, using retrieval failure as the exact example given in the claim."
+        },
+        {
+          "claim": "Attributed at the very first stage of the pipeline. This occurs when the initial user question is not broken down into effective, specific sub-queries \u2014 the sub-queries were irrelevant, missed key aspects of the original question, or sent the retrieval process in the wrong direction from the beginning . In practice, this often stemmed from an inability to challenge flawed premises within the user's question (e.g., processing a query with a historical anachronism) or generating overly broad sub-queries .",
+          "refs": [
+            1,
+            2,
+            3
+          ],
+          "supported": true,
+          "reason": "The source text (chunk [3]) explicitly states that Query Decomposition Errors occur at the initial query processing stage and \"often stemm[ed] from an inability to challenge flawed premises within the user's question (e.g., processing a query with a historical anachronism) or generating overly broad sub-queries,\" directly matching the claim."
+        },
+        {
+          "claim": "Attributed at the document retrieval stage. This occurs when the retriever, despite having well-formed sub-queries, fails to find and return relevant documents \u2014 the correct information was simply not present in the set of all retrieved (unfiltered) documents . The primary root cause was identified as **Knowledge Base Gaps**, where required information was absent from the corpus entirely .",
+          "refs": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "supported": true,
+          "reason": "The source text (chunk [3]) explicitly states that Retrieval Failure occurs when \"the retriever's inability to surface critical documents\" means correct information is not in the retrieved set, and identifies \"Knowledge Base Gaps, where the required information was simply absent from the corpus\" as the primary root cause."
+        },
+        {
+          "claim": "Attributed at the post-retrieval filtering/reranking stage. This occurs when the correct information *was* successfully retrieved, but the subsequent filtering step mistakenly discarded the crucial documents \u2014 evidence of this is found by checking the discarded documents set for information that should have been kept .",
+          "refs": [
+            1,
+            2
+          ],
+          "supported": true,
+          "reason": "The source text explicitly defines \"Evidence Filtering Error\" as occurring when correct information was retrieved but the filtering step discarded crucial documents, and instructs looking in `[Discarded Documents]` for information that should have been kept."
+        },
+        {
+          "claim": "(C) Contradictory Verdict**: The detailed analysis pointed to missing information, but the final verdict was mistakenly \"Sufficient: Yes,\" causing the system to stop searching prematurely (also called **Premature Sufficiency Judgment**) .",
+          "refs": [
+            3
+          ],
+          "supported": true,
+          "reason": "The source text explicitly describes \"Premature Sufficiency Judgment\" as a subtype of SEA Error where \"the logic incorrectly concluded that the gathered evidence was complete, thus halting the refinement loop too early,\" which directly supports the claim about a contradictory verdict causing premature stopping."
+        },
+        {
+          "claim": "Attributed to the query refinement stage, *after* the SEA module has correctly identified insufficiency. This occurs when the system fails to generate effective new sub-queries to target specific information gaps \u2014 the new queries were redundant, vague, or did not address the missing pieces identified by the SEA module .",
+          "refs": [
+            1,
+            2
+          ],
+          "supported": true,
+          "reason": "The source text explicitly defines \"Query Refinement Error\" as occurring after the SEA module correctly identifies insufficient evidence, when the system fails to generate effective new sub-queries, with the new queries being \"redundant, vague, or did not address the missing pieces identified by the SEA module.\""
+        },
+        {
+          "claim": "Attributed only at the final synthesis stage, and only when all preceding steps worked correctly. This occurs when the final evidence set contained all necessary information, but the language model still produced a flawed answer through hallucination, incorrect logical inference, or misinterpretation of the evidence . Common subtypes included: (i) Incorrect Entity Selection from a list of candidates; (ii) Flawed Logical Inference in comparative questions; and (iii) Misinterpretation of Question Granularity .",
+          "refs": [
+            1,
+            2,
+            3
+          ],
+          "supported": true,
+          "reason": "The source text (chunk 3) explicitly states that Generation Failure is attributed when all preceding steps worked correctly and the final evidence contained all necessary information, and lists the same three common subtypes: Incorrect Entity Selection, Flawed Logical Inference in comparative questions, and Misinterpretation of Question Granularity."
+        },
+        {
+          "claim": "This distinction is critical: Component-Level failures stem from the inherent limitations of the underlying retrieval and generation models, while Architectural failures are directly attributable to FAIR-RAG's internal decision-making logic and thus represent the most direct opportunities for framework improvement .",
+          "refs": [
+            4
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states this distinction is \"critical for understanding the system's bottlenecks,\" defines Component-Level failures as stemming from \"inherent limitations of the underlying modules\" and Architectural failures as \"specific to the decision-making logic of the FAIR-RAG framework itself,\" and notes architectural failures offer \"direct targets for refining FAIR-RAG's internal logic.\""
+        }
+      ]
+    },
+    {
+      "question": "What weighted fusion ratio between dense embedding vectors and BM25 sparse embedding vectors was used in the retrieval system, and what rationale was given for this specific weighting?",
+      "answer": "Based on the sources, the retrieval system used a **4:1 ratio**, assigning a weight of **1 for dense embedding vectors** and **0.25 for BM25 sparse embedding vectors** [1][3].\n\nThe rationale provided was twofold:\n\n1. **Initial equal weighting underperformed**: Initially, the assigned relative importance for the two vector fields was set to equal intensity, which resulted in \"lowering the scoring results in the retrieval evaluation\" [1]. This poor performance prompted a shift to an asymmetric weighting strategy.\n\n2. **Alignment with Anthropic's weight assignment**: The final 4:1 ratio was adopted because it \"reflects Anthropic weight assignment\" [1][3]. By applying these weights, dense embeddings are emphasized more heavily while still incorporating the contributions of BM25 sparse embeddings [3].\n\nThe underlying logic is that while embedding models excel at capturing **semantic relationships**, BM25 addresses their limitation by emphasizing **precise lexical matches** \u2014 particularly useful for unique identifiers or technical terms [1]. The weighted rank fusion approach was designed to leverage the **complementary strengths** of both semantic embeddings and lexical matching, aiming to improve the accuracy and relevance of retrieved results [3].",
+      "uncited_lines": 0,
+      "claims": [
+        {
+          "claim": "Based on the sources, the retrieval system used a **4:1 ratio**, assigning a weight of **1 for dense embedding vectors** and **0.25 for BM25 sparse embedding vectors** .",
+          "refs": [
+            1,
+            3
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states \"a ratio of importance 4:1 assigning weight 1 for the dense embedding vectors and 0.25 for the BM25 sparse embedding vectors,\" which directly matches the claim."
+        },
+        {
+          "claim": "1. **Initial equal weighting underperformed**: Initially, the assigned relative importance for the two vector fields was set to equal intensity, which resulted in \"lowering the scoring results in the retrieval evaluation\" . This poor performance prompted a shift to an asymmetric weighting strategy.",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states that equal intensity weighting for the two vector fields resulted in \"lowering the scoring results in the retrieval evaluation,\" which prompted the shift to an asymmetric weighting strategy favoring dense embeddings."
+        },
+        {
+          "claim": "2. **Alignment with Anthropic's weight assignment**: The final 4:1 ratio was adopted because it \"reflects Anthropic weight assignment\" . By applying these weights, dense embeddings are emphasized more heavily while still incorporating the contributions of BM25 sparse embeddings .",
+          "refs": [
+            1,
+            3
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states that the 4:1 ratio (weight 1 for dense, 0.25 for BM25) \"reflects Anthropic weight assignment\" and that \"dense embeddings are emphasized more heavily, while still incorporating the contributions of the BM25 sparse embeddings.\""
+        },
+        {
+          "claim": "The underlying logic is that while embedding models excel at capturing **semantic relationships**, BM25 addresses their limitation by emphasizing **precise lexical matches** \u2014 particularly useful for unique identifiers or technical terms . The weighted rank fusion approach was designed to leverage the **complementary strengths** of both semantic embeddings and lexical matching, aiming to improve the accuracy and relevance of retrieved results .",
+          "refs": [
+            1,
+            3
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states that embedding models capture semantic relationships but may overlook exact matches, that BM25 addresses this by emphasizing precise lexical matches for unique identifiers or technical terms, and that the weighted rank fusion approach \"leverages the complementary strengths of semantic embeddings and lexical matching, aiming to improve the accuracy and relevance of the retrieved results.\""
+        }
+      ]
+    },
+    {
+      "question": "What is the token cost trade-off associated with using active retrieval in EVOR compared to Single-time querying, in terms of both performance gain and computational overhead for ChatGPT and CodeLlama?",
+      "answer": "Based on the sources, here is the detailed token cost trade-off analysis for EVOR's active retrieval compared to Single-time querying:\n\n## Performance Gains\n\n- **Single-time querying** (which formulates the query as explained code and retrieves from diverse knowledge soup) already outperforms Single-time-Q (the traditional RAG pipeline using the question directly as a query), achieving **2.9% performance gain for ChatGPT** and **4.1% performance gain for CodeLlama** in average execution accuracy [1].\n\n- **Active retrieval** (EVOR's full iterative approach) provides an **additional 15.4% average performance increase for ChatGPT** and **15.1% for CodeLlama** on top of Single-time querying [1].\n\n## Computational Overhead\n\n- Moving from Single-time-Q to Single-time querying costs approximately **~25% more processed tokens for both ChatGPT and CodeLlama** [1].\n\n- Adding active retrieval on top of that causes processed tokens to **increase by more than 2 times for both models** compared to Single-time querying [1].\n\n## Summary of Trade-off\n\nThe sources explicitly acknowledge this as a meaningful trade-off: while active retrieval delivers exceptional performance improvements (~15% additional gain), it comes at a very steep computational cost (2x+ token increase), and practitioners are advised to **\"carefully weigh and adjust according to their specific requirements\"** [1].",
+      "uncited_lines": 0,
+      "claims": [
+        {
+          "claim": "Single-time querying** (which formulates the query as explained code and retrieves from diverse knowledge soup) already outperforms Single-time-Q (the traditional RAG pipeline using the question directly as a query), achieving **2.9% performance gain for ChatGPT** and **4.1% performance gain for CodeLlama** in average execution accuracy .",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states that Single-time achieves 2.9% and 4.1% performance gains for ChatGPT and CodeLlama respectively over Single-time-Q, with the same descriptions of query formulation and knowledge retrieval as in the claim."
+        },
+        {
+          "claim": "Active retrieval** (EVOR's full iterative approach) provides an **additional 15.4% average performance increase for ChatGPT** and **15.1% for CodeLlama** on top of Single-time querying .",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states \"With active retrieval, the average performance further increases by 15.4% and 15.1% for ChatGPT and CodeLlama respectively,\" directly confirming the claim's figures and that this increase is on top of Single-time querying."
+        },
+        {
+          "claim": "Moving from Single-time-Q to Single-time querying costs approximately **~25% more processed tokens for both ChatGPT and CodeLlama** .",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states that moving from Single-time-Q to Single-time querying costs \"around 25% more processed tokens for both models\" (ChatGPT and CodeLlama)."
+        },
+        {
+          "claim": "Adding active retrieval on top of that causes processed tokens to **increase by more than 2 times for both models** compared to Single-time querying .",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states \"the processed tokens increase by more than 2 times for both models\" when comparing active retrieval to Single-time querying."
+        },
+        {
+          "claim": "The sources explicitly acknowledge this as a meaningful trade-off: while active retrieval delivers exceptional performance improvements (~15% additional gain), it comes at a very steep computational cost (2x+ token increase), and practitioners are advised to **\"carefully weigh and adjust according to their specific requirements\"** .",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states the ~15% performance gain with active retrieval, the 2x+ token increase, and the exact phrase \"carefully weigh and adjust according to their specific requirements\" regarding the trade-off."
+        }
+      ]
+    },
+    {
+      "question": "How does EVOR's approach of synchronously evolving both queries and knowledge bases compare in execution accuracy to existing retrieval-augmented code generation methods like Reflexion and DocPrompting?",
+      "answer": "## EVOR vs. Existing RACG Methods: Execution Accuracy Comparison\n\n### Overall Performance Gap\n\nEVOR achieves dramatically higher execution accuracy than existing methods. According to the abstract, EVOR \"achieves two to four times of execution accuracy compared to other methods such as Reflexion and DocPrompting\" [3][7].\n\n### Specific Numerical Comparisons (Table 2)\n\n**With ChatGPT:**\n- Vanilla: 8.6% avg | Reflexion: 13.9% avg | DocPrompting: 19.2% avg | **EVOR: 35.3% avg** [5]\n\n**With CodeLlama:**\n- Vanilla: 7.3% avg | Reflexion: 8.9% avg | DocPrompting: 16.0% avg | **EVOR: 32.2% avg** [5]\n\nNotably, EVOR outperforms DocPrompting by **16.1% and 16.2% absolute gain** with ChatGPT and CodeLlama respectively [1], and outperforms DocPrompting by **18.6% on average using CodeLlama** [2].\n\n### Why the Gap Exists\n\n- Methods like MPSC, ExeDec, and Reflexion show **improvements smaller than 2%** over vanilla generation with CodeLlama, with execution accuracy remaining **0 on the Ring dataset** across all three methods [1].\n- DocPrompting, while significantly better, \"only uses the documentation as a single retrieval source, without evolution in both queries and knowledge\" [1].\n\n### Role of Synchronous Evolution\n\nThe ablation study reveals the source of EVOR's advantage [4]:\n\n| Configuration (ChatGPT) | Avg. Accuracy |\n|---|---|\n| No evolution | 22.4% |\n| Evolve query only | 28.4% |\n| Evolve knowledge only | 23.8% |\n| **EVOR (Evolve both)** | **35.3%** |\n\n\"By applying the synchronous evolution of both queries and knowledge, EVOR consistently outperforms evolving either of them by large margins across all datasets\" [4], demonstrating the **complementary strength** of the two evolution mechanisms working together.\n\n### Additional Flexibility\n\nWhen EVOR is further combined with existing methods, performance improves by up to **2.6% additional gain** on average with ChatGPT [4], confirming that EVOR is \"flexible to be integrated with existing approaches to further push forward the boundary of LLM performance in RACG\" [4].",
+      "uncited_lines": 0,
+      "claims": [
+        {
+          "claim": "EVOR achieves dramatically higher execution accuracy than existing methods. According to the abstract, EVOR \"achieves two to four times of execution accuracy compared to other methods such as Reflexion and DocPrompting\" .",
+          "refs": [
+            3,
+            7
+          ],
+          "supported": true,
+          "reason": "The abstract of the source text explicitly states that \"EVOR achieves two to four times of execution accuracy compared to other methods such as Reflexion (Shinn et al., 2024), DocPrompting (Zhou et al., 2023), etc.\""
+        },
+        {
+          "claim": "Vanilla: 8.6% avg | Reflexion: 13.9% avg | DocPrompting: 19.2% avg | **EVOR: 35.3% avg**",
+          "refs": [
+            5
+          ],
+          "supported": true,
+          "reason": "The source table explicitly shows Vanilla avg = 8.6%, Reflexion avg = 13.9%, DocPrompting avg = 19.2%, and EVOR avg = 35.3% for the ChatGPT model column."
+        },
+        {
+          "claim": "Vanilla: 7.3% avg | Reflexion: 8.9% avg | DocPrompting: 16.0% avg | **EVOR: 32.2% avg**",
+          "refs": [
+            5
+          ],
+          "supported": true,
+          "reason": "The table in the source text explicitly shows the average scores: Vanilla 7.3%, Reflexion 8.9%, DocPrompting 16.0%, and EVOR 32.2% under the CodeLlama model column."
+        },
+        {
+          "claim": "Notably, EVOR outperforms DocPrompting by **16.1% and 16.2% absolute gain** with ChatGPT and CodeLlama respectively , and outperforms DocPrompting by **18.6% on average using CodeLlama** .",
+          "refs": [
+            1,
+            2
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states \"EVOR achieves 16.1% and 16.2% absolute gain with ChatGPT and CodeLlama respectively on top of DocPrompting\" and \"EVOR outperforms DocPrompting by 18.6% on average using CodeLlama,\" directly supporting all parts of the claim."
+        },
+        {
+          "claim": "Methods like MPSC, ExeDec, and Reflexion show **improvements smaller than 2%** over vanilla generation with CodeLlama, with execution accuracy remaining **0 on the Ring dataset** across all three methods .",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states \"the improvements of MPSC, ExeDec, and Reflexion are smaller than 2% on average, compared to the vanilla generation\" and \"the execution accuracy remains 0 in Ring across three methods\" with CodeLlama."
+        },
+        {
+          "claim": "DocPrompting, while significantly better, \"only uses the documentation as a single retrieval source, without evolution in both queries and knowledge\" .",
+          "refs": [
+            1
+          ],
+          "supported": true,
+          "reason": "The source text directly states that \"DocPrompting only uses the documentation as a single retrieval source, without evolution in both queries and knowledge,\" and also confirms DocPrompting is significantly better than other baselines."
+        },
+        {
+          "claim": "\"By applying the synchronous evolution of both queries and knowledge, EVOR consistently outperforms evolving either of them by large margins across all datasets\" , demonstrating the **complementary strength** of the two evolution mechanisms working together.",
+          "refs": [
+            4
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states \"EVOR consistently outperforms evolving either of them by large margins across all datasets\" and \"This suggests the complementary strength of synchronous evolution,\" directly supporting both parts of the claim."
+        },
+        {
+          "claim": "When EVOR is further combined with existing methods, performance improves by up to **2.6% additional gain** on average with ChatGPT , confirming that EVOR is \"flexible to be integrated with existing approaches to further push forward the boundary of LLM performance in RACG\" .",
+          "refs": [
+            4
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states \"we observe further performance increase by up to 2.6% on average with ChatGPT\" when combining EVOR with existing methods, and includes the quoted phrase about EVOR being \"flexible to be integrated with existing approaches to further push forward the boundary of LLM performance in RACG.\""
+        }
+      ]
+    },
+    {
+      "question": "Under what condition does RAGPart's majority voting mechanism successfully filter out poisoned embeddings when a corpus contains a single adversarial document with np poisoned fragments, and how does this condition differ from the naive fragment-mixing baseline in terms of the number of poisoned mixes x relative to the total combinations (N choose k)?",
+      "answer": "## RAGPart vs. Naive Baseline: Robustness Conditions for Majority Voting\n\n### Shared Framework\n\nIn the presence of a single adversarial document, majority voting successfully filters out poisoned embeddings when the number of poisoned mixes **x** satisfies [3]:\n\n$$x < \\frac{1}{2}\\binom{N}{k}$$\n\nThis ensures that poisoned embeddings appear less frequently than clean document embeddings in the voting matrix, so clean documents dominate the top-p results [3].\n\n---\n\n### Naive Baseline Condition\n\nIn the naive approach, embeddings are computed **after** fragment mixing, meaning **any mix containing even a single poisoned fragment** is considered adversarial [3]. The number of poisoned mixes is:\n\n$$x = \\binom{N}{k} - \\binom{N-n_p}{k}$$\n\nSo the sufficient condition for robustness is [3]:\n\n$$\\binom{N}{k} - \\binom{N-n_p}{k} < \\frac{1}{2}\\binom{N}{k}$$\n\n---\n\n### RAGPart Condition\n\nRAGPart computes embeddings for **individual fragments first**, then aggregates via mean pooling. This means a mix is only considered poisoned if it contains **at least two poisoned fragments** [3]. The number of poisoned mixes is therefore smaller:\n\n$$x = \\binom{N}{k} - \\binom{N-n_p}{k} - n_p\\binom{N-n_p}{k-1}$$\n\nwhere:\n- $\\binom{N-n_p}{k}$ counts fully clean mixes\n- $n_p\\binom{N-n_p}{k-1}$ counts mixes with **exactly one** poisoned fragment (which RAGPart treats as non-adversarial) [3]\n\nThe sufficient robustness condition becomes [3]:\n\n$$\\binom{N}{k} - \\binom{N-n_p}{k} - n_p\\binom{N-n_p}{k-1} < \\frac{1}{2}\\binom{N}{k}$$\n\n---\n\n### Key Difference\n\nRAGPart's condition is **strictly easier to satisfy** because it subtracts an additional term $n_p\\binom{N-n_p}{k-1}$ from the poisoned mix count [3]. This is confirmed empirically in the robustness tables: for $n_p = 2$, the naive baseline only achieves \u2713 at $N=11, k=3$ and above, while RAGPart already achieves \u2713 at $N=5, k=3$ [2]. The authors explicitly observe that \"RAGPart yields significantly more combinations of N and k that satisfy the robustness condition compared to the naive baseline\" and recommend using **lower N and higher k** in practice [2].",
+      "uncited_lines": 0,
+      "claims": [
+        {
+          "claim": "This ensures that poisoned embeddings appear less frequently than clean document embeddings in the voting matrix, so clean documents dominate the top-p results .",
+          "refs": [
+            3
+          ],
+          "supported": false,
+          "reason": "The source text discusses majority voting and the conditions for filtering poisoned embeddings, but never explicitly states that poisoned embeddings appear less frequently than clean document embeddings in a \"voting matrix\" to ensure clean documents dominate top-p results in the way the claim describes."
+        },
+        {
+          "claim": "$n_p\\binom{N-n_p}{k-1}$ counts mixes with **exactly one** poisoned fragment (which RAGPart treats as non-adversarial)",
+          "refs": [
+            3
+          ],
+          "supported": true,
+          "reason": "The source text explicitly states that $n_p\\binom{N-n_p}{k-1}$ \"counts the number of mixes containing exactly one poisoned fragment,\" and that RAGPart considers a mix poisoned only if it contains at least two poisoned fragments, meaning mixes with exactly one poisoned fragment are treated as non-adversarial."
+        },
+        {
+          "claim": "RAGPart's condition is **strictly easier to satisfy** because it subtracts an additional term $n_p\\binom{N-n_p}{k-1}$ from the poisoned mix count . This is confirmed empirically in the robustness tables: for $n_p = 2$, the naive baseline only achieves \u2713 at $N=11, k=3$ and above, while RAGPart already achieves \u2713 at $N=5, k=3$ . The authors explicitly observe that \"RAGPart yields significantly more combinations of N and k that satisfy the robustness condition compared to the naive baseline\" and recommend using **lower N and higher k** in practice .",
+          "refs": [
+            2,
+            3
+          ],
+          "supported": true,
+          "reason": "The source text directly confirms all key elements: the RAGPart formula subtracts the additional term $n_p\\binom{N-n_p}{k-1}$, Table 2 shows the naive baseline first achieves \u2713 at N=11,k=3, Table 3 shows RAGPart achieves \u2713 at N=5,k=3, and the text explicitly states \"RAGPart yields significantly more combinations of N and k that satisfy the robustness condition compared to the naive baseline\" and recommends \"lower values of N and higher values of k in practice.\""
+        }
+      ]
+    }
+  ]
+}
