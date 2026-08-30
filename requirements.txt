@@ -1,0 +1,18 @@
+# Derived from the imports in fetch_arxiv_papers.py, ingest_papers.py, query_papers.py.
+# Stdlib imports (argparse, glob, json, os, re, time) need no entries.
+# Pinned to the versions resolved on 2026-08-27, Python 3.14.2.
+
+# fetch_arxiv_papers.py
+requests==2.34.2
+feedparser==6.0.14
+
+# ingest_papers.py
+pypdf==6.16.2
+chromadb==1.5.9
+voyageai==0.5.0
+
+# query_papers.py  (also chromadb + voyageai, above)
+anthropic==1.1.0
+
+# Used by ingest_papers.py and query_papers.py to load API keys from .env
+python-dotenv==1.2.3

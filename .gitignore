@@ -1,0 +1,19 @@
+# Virtual environments
+venv/
+.venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+
+# Local run artifacts — regenerated, not worth versioning
+ingest.log
+chroma_db/
+
+# Downloaded PDFs — large, re-fetchable from arXiv via fetch_arxiv_papers.py.
+# metadata.jsonl is the reproducible record of what was fetched, so keep it tracked.
+papers/*.pdf
+!papers/metadata.jsonl
