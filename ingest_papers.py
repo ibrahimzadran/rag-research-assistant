@@ -59,10 +59,21 @@ def extract_text_by_page(pdf_path: str):
 
 
 def chunk_pages(pages, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
+    """Split a document into overlapping word-based chunks that track pages.
+
+    Every word is tagged with the page it came from, so chunks are free to run
+    across page breaks while still knowing which pages they cover. Returns a
+    list of dicts with the chunk text, a best-guess `page`, and the true
+    `page_start`/`page_end` span.
     """
-    Concatenate all page text with page markers, then split into
-    overlapping word-based chunks. Returns list of dicts with text + page.
-    """
+    if overlap >= chunk_size:
+        # The window advances by (chunk_size - overlap). At zero or negative
+        # that is an infinite loop, so fail loudly rather than hang.
+        raise ValueError(
+            f"overlap ({overlap}) must be smaller than chunk_size ({chunk_size}); "
+            "otherwise the window never advances"
+        )
+
     words_with_pages = []
     for page_num, text in pages:
         for word in text.split():
