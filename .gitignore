@@ -17,3 +17,4 @@ chroma_db/
 # metadata.jsonl is the reproducible record of what was fetched, so keep it tracked.
 papers/*.pdf
 !papers/metadata.jsonl
+chroma_db.backup/
