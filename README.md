@@ -64,19 +64,53 @@ after a change.
 
 ### Measured baseline (20 papers, 460 chunks)
 
-| Metric | Score | Meaning |
-|---|---|---|
-| recall@10 | 1.00 | The correct passage is always retrieved |
-| recall@5 | 0.90 | Two of twenty missed — why `TOP_K` is 10 |
-| MRR | 0.67 | Correct passage ranked first about half the time |
-| Citation accuracy | 0.92 | Cited claims genuinely supported by their source |
-| Citation coverage | 1.00 | Every substantive line carries a citation |
+Metrics are listed by how much they can be trusted, which is not the same as how
+impressive they look.
 
-**Read these with suspicion.** Test questions are generated *from* the passages
-they target, so they reuse that passage's vocabulary. Real questions, phrased
-in your own words, are harder. Treat recall as an upper bound, not a promise.
-Sample sizes are also small — 20 retrieval cases, ~49 claims — so small
-differences between runs are noise, not signal.
+**Primary — paper-level retrieval.** Did any chunk from the right paper come
+back, and at what rank. This needs no judge and no hand-copied excerpt, so it is
+the only figure directly comparable across every question set.
+
+| Metric | Score |
+|---|---|
+| Paper-level recall@10 | **1.00** |
+| Paper-level MRR | **1.00** |
+
+The correct paper ranks first for every question tried, whether the question was
+machine-generated or hand-written after reading the paper.
+
+**Secondary — chunk-level retrieval. Judge-dependent estimates, not measurements.**
+Deciding whether a specific chunk answers a question requires either an exact
+excerpt or a model's judgement, and both are fallible.
+
+| Question set | n | Ground truth | recall@10 | MRR |
+|---|---|---|---|---|
+| Generated, unverified | 20 | one chunk id | 1.00 | 0.67 |
+| Generated, self-checked | 20 | one chunk id | 0.95 | 0.71 |
+| Hand-written, full-text read | 13 | LLM-judged | 0.92 | **0.75** (corrected) |
+
+The hand-written set was first reported at MRR 0.88. All 13 cases were then
+verified by hand against the PDFs: **2 of 12 judged calls were wrong** (17%). In
+one, the judge accepted a bibliography entry naming a dataset as an answer to
+"which dataset did this paper use"; the real answer was at rank 8. In another it
+accepted an abstract containing one of three numbers a comparison question
+needed; the real answer was at rank 6. Correcting both gives 0.75, or 0.73 if a
+third borderline case is also counted against.
+
+Generated sets carry the opposite bias: they demand one *specific* chunk, so a
+different chunk that answers perfectly scores as a miss. Their figures are
+therefore floors. Read every chunk-level number as an estimate with roughly
+±0.05 of judge noise, and prefer the paper-level row when comparing anything.
+
+**Answer quality (5 questions, ~49 claims):**
+
+| Metric | Score |
+|---|---|
+| Citation accuracy | 0.92 |
+| Citation coverage | 1.00 |
+
+Sample sizes throughout are small -- 13 to 20 questions, ~49 claims. Differences
+smaller than about 0.05 are noise, not signal.
 
 ## Things that will bite you
 
@@ -119,10 +153,40 @@ a system you do not ship.
 
 ## Known limitations
 
-- Test questions share vocabulary with their source passages (see above).
-- `TOP_K = 10` retrieves more context than most answers use — a reranker would
-  recover the waste.
-- The citation judge is an LLM. Two of its verdicts were hand-checked against
-  the PDFs and both were correct, but that is a sample of two.
-- Claim extraction is line-based. Bullets under an introductory line that holds
-  the citation are handled, but unusual formatting may not be.
+**Embedding dilution: a decisive sentence can be buried by its own chunk.** A
+chunk's vector represents its 500 words as a whole, so a single sentence about a
+different topic gets averaged away and the chunk ranks far lower than its content
+deserves.
+
+Documented example. For the question *"why does the CARROT paper consider it
+impractical to directly train a model to predict the optimal chunk combination
+order?"*, the complete answer is one sentence in `CARROT...::chunk12`:
+
+> "However, this is impractical: (i) the N! combinatorial space makes supervised
+> data collection infeasible; (ii) non-monotonic utility functions ... are
+> difficult for neural networks to approximate; (iii) predicting chunk
+> combination orders requires structured outputs from the N! space, whereas
+> predicting MCTS hyperparameters reduces to lightweight regression."
+
+All three reasons, contiguous, in one chunk. Yet that chunk ranks **16th of 460**
+and never enters the top 10. The reason is positional: the answer begins at word
+113 of 500, and the chunk opens with space-complexity notation and a section on
+the configuration agent. Its embedding describes the configuration agent, not the
+argument buried inside it.
+
+This is the single confirmed retrieval failure in the hand-written set, and it
+constrains the fix. A reranker over the current top 10 would not help, because
+the chunk is not in the top 10. The pattern that would work is **over-retrieve
+then rerank** -- fetch ~50, rerank, keep 10. Rank 16 sits comfortably inside 50.
+
+Other limitations:
+
+- Generated test questions share vocabulary with their source passages, and
+  demand one specific chunk when several may answer equally well.
+- The relevance and citation judges are LLMs. Both have been hand-checked
+  (2 of 2 citation verdicts correct; 10 of 12 relevance verdicts correct), but
+  neither is validated at scale.
+- `TOP_K = 10` retrieves more context than most answers use -- roughly half the
+  retrieved chunks go uncited in a typical answer.
+- Claim extraction in `eval_citations.py` is line-based. Fragments ending in a
+  colon and rendered formulas are filtered out; unusual formatting may not be.
